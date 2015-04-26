@@ -35,9 +35,9 @@ The analysis is done in following steps:
 
 ## Download Data and Read
 
- #### Download, Extract and Read the data from the files for analysis.
- 
- #### Downloaded data is in the "<workspace>/proj_data" folder created in the workspace.
+#### Download, Extract and Read the data from the files for analysis.
+
+#### Downloaded data is in the "<workspace>/proj_data" folder created in the workspace.
  
 <pre><code>
  DOWNLOADED_FILE_NAME = "projdataset.zip"
@@ -164,135 +164,122 @@ combined_data <- combined_data %>%
 
 
 
- 
+## Part 3
 
- ## Part 3
-
-
-  ### Uses descriptive activity names to name the activities in the data set
+### Uses descriptive activity names to name the activities in the data set
 
 
-  To achieve the above, script will do the following:
-  
-  1. Read descriptive activity names from "activity_labels.txt"
-  2. Mutate the the combined data set's activity coloumn with values from activity_labels.txt
+To achieve the above, script will do the following:
+
+1. Read descriptive activity names from "activity_labels.txt"
+2. Mutate the the combined data set's activity coloumn with values from activity_labels.txt
 
 
-  #### Read the "activity_labels.txt" to fetch the descriptive names.
-  
-  <pre><code>
-  activity_ds <- read.table("proj_data/activity_labels.txt")
-  </code></pre>
-  
-  #### Replace the activity ids with the actual names.
-  
-  <pre><code>
-  combined_data <- combined_data %>% 
-  mutate(activity = as.character(activity_ds$V2[as.numeric(activity)]))
-  </code></pre>
+#### Read the "activity_labels.txt" to fetch the descriptive names.
+
+<pre><code>
+activity_ds <- read.table("proj_data/activity_labels.txt")
+</code></pre>
+
+#### Replace the activity ids with the actual names.
+
+<pre><code>
+combined_data <- combined_data %>% 
+mutate(activity = as.character(activity_ds$V2[as.numeric(activity)]))
+</code></pre>
 
   
   
-  
-  
-  ## Part 4
-  
-  ### Appropriately labels the data set with descriptive variable names.
-  
-  To achieve the above script will do the following
+## Part 4
 
-  1. Script will use the "stringr" package to rename the variables.
-  2. Variables names like "350_fBodyAccJerk-std()-Z" will be renamed to "freqDomainSignal_BodyAccJerk_standardDeviation_Z_axis".
-  3. Column names like "201_tBodyAccMag-mean()" will be renamed to "time_BodyAccMag_mean" to make it more readable.
-  4. Certain terms in column names will be expanded to be more descriptive.
-  
-  
-  
-  #### load the 'stringr' package
-  <pre><code>
-  library(stringr)
-  </code></pre>
-  
-  #### extract the vector of current column names 
-  <pre><code>
-  cnames <- names(combined_data)
-  </code></pre>
-  
-  #### Use RegEx to transform column names.
-  The script will use regex to match the column names and transform them
-  
-  * rename column names like "350_fBodyAccJerk-std()-Z" to "f_BodyAccJerk_standardDeviation_Z_axis" 
-  * and column names like "201_tBodyAccMag-mean()" to "t_BodyAccMag_mean"
-  
-  <pre><code>
-  pattern <- "(\\d{1,3})_(t|f)(\\w+)(-)(\\w+)(\\(\\))-?(X|Y|Z)?"
-  
-  cnames <- str_replace_all(cnames, pattern, "\\2_\\3_\\5_\\7")
-  cnames <- str_replace_all(cnames, "(.*)(_$)", "\\1")
-  cnames <- str_replace_all(cnames, "(.*_)([X|Y|Z])", "\\1\\2_axis")
-  
-  </code></pre>
-  
-  ##### Expand certain parts of the column name to be more descriptive.
-  * prefix 't' to be replaced with 'time'
-  * prefix 'f' to be replaced with 'frequency'
-  * suffix 'std' to be replaced with 'standardDeviation'
-  <pre><code>
-  cnames <- str_replace_all(cnames, "^(t)(_.*)$", "time\\2")
-  cnames <- str_replace_all(cnames, "^(f)(_.*)$", "frequency\\2")
-  cnames <- str_replace_all(cnames, "^(.*_)(std)(.*)?$", "\\1standardDeviation\\3")
-  </code></pre>
-  
-  * 'BodyBody' to be replaced with 'Body'
-  * 'Acc' to be replaced with 'Acceleration'
-  * 'Gyro' to be replaced with 'Gyroscope'
-  * 'Mag' to be replaced with 'Magnitude'
-  <pre><code>
-  cnames <- str_replace_all(cnames, "(.*)(BodyBody)(.*)", "\\1Body\\3")
-  cnames <- str_replace_all(cnames, "(.*)(Acc)(.*)", "\\1Acceleration\\3")
-  cnames <- str_replace_all(cnames, "(.*)(Gyro)(.*)", "\\1Gyroscope\\3")
-  cnames <- str_replace_all(cnames, "(.*)(Mag)(.*)", "\\1Magnitude\\3")
-  </code></pre>
-  
-  * 'subject' to be replaced with 'subject_id'
-  * 'activity' to be replaced with 'activity_name'
-  * 'set' to be replaced with 'data_set_name'
-  <pre><code>
-  cnames <- str_replace(cnames, "subject", "subject_id")
-  cnames <- str_replace(cnames, "activity", "activity_name")
-  cnames <- str_replace(cnames, "set", "data_set_name")
-  </code></pre>
-  
-  
-  
-  #### renaming the columns of combined dataset with only mean and standard deviation measures 
-  <pre><code>
-  colnames(combined_data) <- cnames
-  </code></pre>
-  
-  
-  
-  
-  
-  
-  
-  ## Part 5
-  
-  ### From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+### Appropriately labels the data set with descriptive variable names.
 
-  To achieve the above, script will do the following
-  
-  1. group the data by subject, activity and data set (train/test)
-  2. summarise each group with the mean calculation
-  
-  
-  
-  #####The following code performs the above steps 1 & 2 
-  <pre><code>
-  tidy <- combined_data
-  
-  tidy <- tidy %>% 
-  group_by(subject_id,activity_name,data_set_name) %>%
-  summarise_each(funs(mean))
-  </code></pre>
+To achieve the above script will do the following
 
+1. Script will use the "stringr" package to rename the variables.
+2. Variables names like "350_fBodyAccJerk-std()-Z" will be renamed to "freqDomainSignal_BodyAccJerk_standardDeviation_Z_axis".
+3. Column names like "201_tBodyAccMag-mean()" will be renamed to "time_BodyAccMag_mean" to make it more readable.
+4. Certain terms in column names will be expanded to be more descriptive.
+
+  
+  
+#### load the 'stringr' package
+<pre><code>
+library(stringr)
+</code></pre>
+  
+#### extract the vector of current column names 
+<pre><code>
+cnames <- names(combined_data)
+</code></pre>
+  
+#### Use RegEx to transform column names.
+The script will use regex to match the column names and transform them
+  
+* rename column names like "350_fBodyAccJerk-std()-Z" to "f_BodyAccJerk_standardDeviation_Z_axis" 
+* and column names like "201_tBodyAccMag-mean()" to "t_BodyAccMag_mean"
+  
+<pre><code>
+pattern <- "(\\d{1,3})_(t|f)(\\w+)(-)(\\w+)(\\(\\))-?(X|Y|Z)?"
+
+cnames <- str_replace_all(cnames, pattern, "\\2_\\3_\\5_\\7")
+cnames <- str_replace_all(cnames, "(.*)(_$)", "\\1")
+cnames <- str_replace_all(cnames, "(.*_)([X|Y|Z])", "\\1\\2_axis")
+
+</code></pre>
+  
+##### Expand certain parts of the column name to be more descriptive.
+* prefix 't' to be replaced with 'time'
+* prefix 'f' to be replaced with 'frequency'
+* suffix 'std' to be replaced with 'standardDeviation'
+<pre><code>
+cnames <- str_replace_all(cnames, "^(t)(_.*)$", "time\\2")
+cnames <- str_replace_all(cnames, "^(f)(_.*)$", "frequency\\2")
+cnames <- str_replace_all(cnames, "^(.*_)(std)(.*)?$", "\\1standardDeviation\\3")
+</code></pre>
+
+* 'BodyBody' to be replaced with 'Body'
+* 'Acc' to be replaced with 'Acceleration'
+* 'Gyro' to be replaced with 'Gyroscope'
+* 'Mag' to be replaced with 'Magnitude'
+<pre><code>
+cnames <- str_replace_all(cnames, "(.*)(BodyBody)(.*)", "\\1Body\\3")
+cnames <- str_replace_all(cnames, "(.*)(Acc)(.*)", "\\1Acceleration\\3")
+cnames <- str_replace_all(cnames, "(.*)(Gyro)(.*)", "\\1Gyroscope\\3")
+cnames <- str_replace_all(cnames, "(.*)(Mag)(.*)", "\\1Magnitude\\3")
+</code></pre>
+
+* 'subject' to be replaced with 'subject_id'
+* 'activity' to be replaced with 'activity_name'
+* 'set' to be replaced with 'data_set_name'
+<pre><code>
+cnames <- str_replace(cnames, "subject", "subject_id")
+cnames <- str_replace(cnames, "activity", "activity_name")
+cnames <- str_replace(cnames, "set", "data_set_name")
+</code></pre>
+
+
+  
+#### renaming the columns of combined dataset with only mean and standard deviation measures 
+<pre><code>
+colnames(combined_data) <- cnames
+</code></pre>
+
+
+## Part 5
+
+### From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+
+To achieve the above, script will do the following
+
+1. group the data by subject, activity and data set (train/test)
+2. summarise each group with the mean calculation
+
+#####The following code performs the above steps 1 & 2 
+<pre><code>
+tidy <- combined_data
+
+tidy <- tidy %>% 
+group_by(subject_id,activity_name,data_set_name) %>%
+summarise_each(funs(mean))
+</code></pre>
