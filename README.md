@@ -35,9 +35,9 @@ The analysis is done in following steps:
 
 ## Download Data and Read
 
- ####Download, Extract and Read the data from the files for analysis.
+ #### Download, Extract and Read the data from the files for analysis.
  
- ####Downloaded data is in the "<workspace>/proj_data" folder created in the workspace.
+ #### Downloaded data is in the "<workspace>/proj_data" folder created in the workspace.
  
 <pre><code>
  DOWNLOADED_FILE_NAME = "projdataset.zip"
@@ -60,7 +60,7 @@ if( ! file.exists(DOWNLOADED_FILE_NAME)){
 }
 </code></pre>
 
-####Read relevant files
+#### Read relevant files
 
 <pre> <code>
 
@@ -166,7 +166,7 @@ combined_data <- combined_data %>%
 
  
 
-  ## Part 3
+ ## Part 3
 
 
   ### Uses descriptive activity names to name the activities in the data set
