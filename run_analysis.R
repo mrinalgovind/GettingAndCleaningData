@@ -53,7 +53,6 @@ Y_train <- read.table("proj_data/Y_train.txt")
 ## Load libraries to be used
 
 library(dplyr)
-library(tidyr)
 
 # Merge the test dataset files
 subject_test <- tbl_df(subject_test)

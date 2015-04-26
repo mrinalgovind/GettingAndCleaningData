@@ -67,6 +67,109 @@ Following transformations are performed:
 ## Output tidy data (tidy_data.txt)
 The output is a file named *tidy_data.txt*.
 
-The header of the file contains the name of the variables, which are pretty descriptive and easily understanddable. 
+The header of the file contains the name of the variables.
 
+### Variables description
+
+* subject_id    :   Integer ID of the test subject whose movements were measured. 
+
+* activity_name :   Name of the activity the test subject was performing at the time of measurement. Can take any of the following 6 values.
+    * Walking
+    * Walking Upstairs
+    * Walking Downstairs
+    * Sitting
+    * Standing
+    * Laying
+    
+* data_set_name :   Name of the original Data Set from which this Subject's data was merged. Can take values as 'test' or 'train'.
+
+
+All variables below are mean of a measurement for each subject and activity.
+All values are floating point numbers between -1 to 1. 
+
+* time_BodyAcceleration_mean_X_axis : Raw Time domain body acceleration mean in X dimension
+* time_BodyAcceleration_mean_Y_axis : Raw Time domain body acceleration mean in Y dimension
+* time_BodyAcceleration_mean_Z_axis : Raw Time domain body acceleration mean in Z dimension
+
+* time_GravityAcceleration_mean_X_axis : Raw Time domain Gravity acceleration mean in X dimension
+* time_GravityAcceleration_mean_Y_axis : Raw Time domain Gravity acceleration mean in Y dimension
+* time_GravityAcceleration_mean_Z_axis : Raw Time domain Gravity acceleration mean in Z dimension
+
+* time_BodyAccelerationJerk_mean_X_axis : Body linear acceleration mean to obtain jerk signal in X dimension
+* time_BodyAccelerationJerk_mean_Y_axis : Body linear acceleration mean to obtain jerk signal in Y dimension
+* time_BodyAccelerationJerk_mean_Z_axis : Body linear acceleration mean to obtain jerk signal in Z dimension
+
+* time_BodyGyroscope_mean_X_axis : Raw Time domain body gyroscope mean in X dimension
+* time_BodyGyroscope_mean_Y_axis : Raw Time domain body gyroscope mean in Y dimension
+* time_BodyGyroscope_mean_Z_axis : Raw Time domain body gyroscope mean in Z dimension
+
+* time_BodyGyroscopeJerk_mean_X_axis : Body Angular Velocity mean to obtain jerk signal in X dimension
+* time_BodyGyroscopeJerk_mean_Y_axis : Body Angular Velocity mean to obtain jerk signal in Y dimension
+* time_BodyGyroscopeJerk_mean_Z_axis : Body Angular Velocity mean to obtain jerk signal in Z dimension
+
+* time_BodyAccelerationMagnitude_mean : Raw Time domain body acceleration Magnitude mean
+* time_GravityAccelerationMagnitude_mean : Raw Time domain Gravity acceleration Magnitude mean
+* time_BodyAccelerationJerkMagnitude_mean : Body linear acceleration Magnitude mean to obtain jerk signal
+* time_BodyGyroscopeMagnitude_mean : Raw Time domain body gyroscope Magnitude mean
+* time_BodyGyroscopeJerkMagnitude_mean : Body Angular Velocity Magnitude mean to obtain jerk signal
+
+* frequency_BodyAcceleration_mean_X_axis : Fast Fourier Transform of Raw Time domain body acceleration mean in X dimension
+* frequency_BodyAcceleration_mean_Y_axis : Fast Fourier Transform of Raw Time domain body acceleration mean in Y dimension
+* frequency_BodyAcceleration_mean_Z_axis : Fast Fourier Transform of Raw Time domain body acceleration mean in Z dimension
+
+* frequency_BodyAccelerationJerk_mean_X_axis : Fast Fourier Transform of Body linear acceleration mean to obtain jerk signal in X dimension
+* frequency_BodyAccelerationJerk_mean_Y_axis : Fast Fourier Transform of Body linear acceleration mean to obtain jerk signal in Y dimension
+* frequency_BodyAccelerationJerk_mean_Z_axis : Fast Fourier Transform of Body linear acceleration mean to obtain jerk signal in Z dimension
+
+* frequency_BodyGyroscope_mean_X_axis : Fast Fourier Transform of Raw Time domain body gyroscope mean in X dimension
+* frequency_BodyGyroscope_mean_Y_axis : Fast Fourier Transform of Raw Time domain body gyroscope mean in Y dimension
+* frequency_BodyGyroscope_mean_Z_axis : Fast Fourier Transform of Raw Time domain body gyroscope mean in Z dimension
+
+* frequency_BodyAccelerationMagnitude_mean : Fast Fourier Transform of Raw Time domain body acceleration Magnitude mean
+* frequency_BodyAccelerationJerkMagnitude_mean : Fast Fourier Transform of Body linear acceleration Magnitude mean to obtain jerk signal
+* frequency_BodyGyroscopeMagnitude_mean : Fast Fourier Transform of Raw Time domain body gyroscope Magnitude mean
+* frequency_BodyGyroscopeJerkMagnitude_mean : Fast Fourier Transform of Body Angular Velocity Magnitude mean to obtain jerk signal
+
+* time_BodyAcceleration_standardDeviation_X_axis : Raw Time domain body acceleration standard deviation in X dimension
+* time_BodyAcceleration_standardDeviation_Y_axis : Raw Time domain body acceleration standard deviation in Y dimension
+* time_BodyAcceleration_standardDeviation_Z_axis : Raw Time domain body acceleration standard deviation in Z dimension
+
+* time_GravityAcceleration_standardDeviation_X_axis : Raw Time domain Gravity acceleration standard deviation in X dimension
+* time_GravityAcceleration_standardDeviation_Y_axis : Raw Time domain Gravity acceleration standard deviation in Y dimension
+* time_GravityAcceleration_standardDeviation_Z_axis : Raw Time domain Gravity acceleration standard deviation in Z dimension
+
+* time_BodyAccelerationJerk_standardDeviation_X_axis : Body linear acceleration standard deviation to obtain jerk signal in X dimension
+* time_BodyAccelerationJerk_standardDeviation_Y_axis : Body linear acceleration standard deviation to obtain jerk signal in Y dimension
+* time_BodyAccelerationJerk_standardDeviation_Z_axis : Body linear acceleration standard deviation to obtain jerk signal in Z dimension
+
+* time_BodyGyroscope_standardDeviation_X_axis : Raw Time domain body gyroscope standard deviation in X dimension
+* time_BodyGyroscope_standardDeviation_Y_axis : Raw Time domain body gyroscope standard deviation in Y dimension
+* time_BodyGyroscope_standardDeviation_Z_axis : Raw Time domain body gyroscope standard deviation in Z dimension
+
+* time_BodyGyroscopeJerk_standardDeviation_X_axis : Body Angular Velocity standard deviation to obtain jerk signal in X dimension
+* time_BodyGyroscopeJerk_standardDeviation_Y_axis : Body Angular Velocity standard deviation to obtain jerk signal in Y dimension
+* time_BodyGyroscopeJerk_standardDeviation_Z_axis : Body Angular Velocity standard deviation to obtain jerk signal in Z dimension
+
+* time_BodyAccelerationMagnitude_standardDeviation : Raw Time domain body acceleration Magnitude standard deviation
+* time_GravityAccelerationMagnitude_standardDeviation : Raw Time domain Gravity acceleration Magnitude standard deviation
+* time_BodyAccelerationJerkMagnitude_standardDeviation : Body linear acceleration Magnitude standard deviation to obtain jerk signal 
+* time_BodyGyroscopeMagnitude_standardDeviation : Raw Time domain body gyroscope Magnitude standard deviation 
+* time_BodyGyroscopeJerkMagnitude_standardDeviation : Body Angular Velocity Magnitude standard deviation to obtain jerk signal
+
+* frequency_BodyAcceleration_standardDeviation_X_axis : Fast Fourier Transform of Raw Time domain body acceleration standard deviation in X dimension
+* frequency_BodyAcceleration_standardDeviation_Y_axis : Fast Fourier Transform of Raw Time domain body acceleration standard deviation in Y dimension
+* frequency_BodyAcceleration_standardDeviation_Z_axis : Fast Fourier Transform of Raw Time domain body acceleration standard deviation in Z dimension
+
+* frequency_BodyAccelerationJerk_standardDeviation_X_axis : Fast Fourier Transform of Body linear acceleration standard deviation to obtain jerk signal in X dimension
+* frequency_BodyAccelerationJerk_standardDeviation_Y_axis : Fast Fourier Transform of Body linear acceleration standard deviation to obtain jerk signal in Y dimension
+* frequency_BodyAccelerationJerk_standardDeviation_Z_axis : Fast Fourier Transform of Body linear acceleration standard deviation to obtain jerk signal in Z dimension
+
+* frequency_BodyGyroscope_standardDeviation_X_axis : Fast Fourier Transform of Raw Time domain body gyroscope standard deviation in X dimension
+* frequency_BodyGyroscope_standardDeviation_Y_axis : Fast Fourier Transform of Raw Time domain body gyroscope standard deviation in Y dimension
+* frequency_BodyGyroscope_standardDeviation_Z_axis : Fast Fourier Transform of Raw Time domain body gyroscope standard deviation in Z dimension
+
+* frequency_BodyAccelerationMagnitude_standardDeviation : Fast Fourier Transform of Raw Time domain body acceleration Magnitude standard deviation
+* frequency_BodyAccelerationJerkMagnitude_standardDeviation : Fast Fourier Transform of Body linear acceleration Magnitude standard deviation to obtain jerk signal 
+* frequency_BodyGyroscopeMagnitude_standardDeviation : Fast Fourier Transform of Raw Time domain body gyroscope Magnitude standard deviation
+* frequency_BodyGyroscopeJerkMagnitude_standardDeviation : Fast Fourier Transform of Body Angular Velocity Magnitude standard deviation to obtain jerk signal
 
